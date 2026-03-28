@@ -10,7 +10,7 @@ Please contact agentictoaster@gmail.com for media releases, republishing and oth
 ## Stable Links
 - Papers
     - [Consent Bound Agency Whitepaper](https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.md)
-        - https://agentictoaster.github.io/documents/whitepapers/consent_bound_agency.md
+        - https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.md
     - [Consent Bound Agency Whitepaper (PDF)](https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.pdf)
         - https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.pdf
     - [Consent Bound Agency Technical Brief](https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency_brief.md)
