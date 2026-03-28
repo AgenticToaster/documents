@@ -28,7 +28,7 @@ Agentic systems are moving beyond conversational assistance and into the realm o
 
 In response, I introduce **consent-bound agency** as a foundation for trustworthy autonomy. Here, consent is not a one-sided grant but a mutual agreement: the requestor consents to specific effects, and the agent commits to producing those effects only when the work is justified under relevant duties, constraints, and capabilities. This agreement is formalized through consent contracts, which distinguish between implied and explicit consent, support contract modification when effect boundaries are crossed, and provide a framework for withdrawal, revocation, and remediation when actions exceed consent. **Scope-as-Contract (SaC) serves** as the technical architecture that operationalizes these contracts in distributed and embodied agents, preserving contract fidelity across subsystems and ensuring that all effectful operations within that scope of action are bounded by the active agreement. As such, consent-bound agency is a natural and practical blueprint for building agents that are both autonomous and accountable.
 
-## **I. Introduction:** 
+## **I. Introduction:**
 
 Agentic systems are advancing from conversational assistance to autonomous action. A capable agent does not just provide answers; it observes context, forms intentions, selects actions, and coordinates multiple subsystems to achieve outcomes. These subsystems may include request-handling interfaces, planning and reasoning mechanisms, state and memory substrates, tool and actuator interfaces, and background maintenance processes. Once an agent transitions from responding to acting, its failure modes become materially consequential. Privacy may be violated, assets transferred, messages sent, doors opened, medication recommended, and physical actions initiated. This is particularly critical in cases where agents are embodied in physical systems such as robots and autonomous driving systems, and are operating in dynamic and adversarial environments populated by individuals who may not be registered users but whose rights must still be respected.
 
@@ -41,7 +41,6 @@ In the consent-bound agency model, autonomy is governed not by delegated permiss
 Consent-bound agency treats consent as more than just a one-sided grant from requestor to system. Rather, it is best viewed as a mutual agreement:
 
 * The **requestor consents** to certain specific effects on their interests (and, when applicable, on the interests they legitimately represent).
-
 * The **agent consents** to bring about those effects by taking certain actions, subject to its duties, constraints, and capabilities.
 
 This second form of consent is not anthropomorphism. It is a practical way to formalize the agent’s responsibility. A request can be reasonable and still unjustified. A request can be consented to and still unsafe. An agent must be able to decide not only what it can do, but what it should do. Consent-bound agency makes that decision explicit as part of the governance model rather than an ad hoc exception.
@@ -65,13 +64,9 @@ Consent contracts distinguish two forms of consent that humans already use intui
 **Explicit consent** is required when the agent determines that a proposed next step would exceed what the request reasonably implies. This most often occurs when the action changes the effect class in a meaningful way, such as:
 
 * turning an internal preparation into an external side effect (draft to send, plan to execute, simulate to actuate),
-
 * expanding the set of affected parties (adding recipients, sharing beyond the requestor, disclosing to third parties),
-
 * increasing persistence or reuse (remembering, promoting, or generalizing private context),
-
 * introducing irreversibility (deletion, revocation, physical restraint, or actions that cannot be undone),
-
 * or operating in high-risk or high complexity domains where ambiguity itself is a reason to pause and clarify.
 
 Consent boundaries are rarely abstract. “Draft an email to the surgeon” implies composition. Sending is a separate boundary, and adding recipients is another boundary because it changes who is affected. “Help me remember this” implies personal retention. “Teach this to future users” is a different effect class. “Pick up the child” is not just another physical action. It introduces physical contact and bodily autonomy effects that demand a higher standard of consent and justification.
@@ -91,9 +86,7 @@ In practice, an agent will often elicit consent using an action proxy because it
 Consent contracts align naturally with service contract vocabulary. We adopt three artifacts as a framing device:
 
 * **Purchase Order (PO):** the request as expressed by the requestor. It defines initial intent and implied consent.
-
 * **Work Order (WO):** the agent’s internal scope-of-work contract for a bounded slice of execution. It encodes what the agent believes it is permitted to do under implied consent, policy constraints, and current context.
-
 * **Change Order (CO):** an explicit consent step invoked when the agent determines the next intended action would exceed the PO’s implied consent boundary. If granted, the WO is invalidated, and a successor WO governs the subsequent slice of work.
 
 This vocabulary is not bureaucratic ceremony. It is a way to preserve agency on both sides. The requestor remains in control of boundary expansions that affect them or others. The agent remains responsible for deciding what is required and for committing only to work it deems relevant, acceptable, proportional, and sufficiently constrained.
@@ -103,7 +96,6 @@ This vocabulary is not bureaucratic ceremony. It is a way to preserve agency on 
 Consent-bound agency needs a clear story for withdrawal because autonomy is not a single event. Consent can be withdrawn while work is in progress. The requestor can revoke consent, and the agent can withdraw commitment. These are both legitimate and must be handled predictably.
 
 * A requestor revocation may mean “stop sending messages,” “do not contact that person,” “do not store that information,” or “do not proceed with physical intervention.”
-
 * An agent withdrawal may mean “I cannot execute this action safely,” “constraints have changed,” “standing is unclear,” or “this action conflicts with duties.”
 
 Withdrawal is not simply cancellation. It implies obligations. The system must stop future work that depends on the revoked terms. It must contain propagation where possible. It must update the agreement state so that options for subsequent actions are bound by what, if anything, remains under consent. In high-risk scenarios, withdrawal may also require notification and escalation. For example, if a patient revokes consent for a nonessential action, the agent should stop performing the action. If revocation conflicts with immediate safety duties, the agent may need to act minimally to prevent harm and follow up with an explanation and accountability.
@@ -129,13 +121,9 @@ A mature autonomy model must assume mistakes. When an agent exceeds the consent 
 Not all breaches are reversible. An email cannot be unsent once it has been read. A physical intervention cannot be undone. Consent-bound agency still provides a principled approach because remedy is not limited to reversal. A consent breach should trigger a remediation protocol that aims to make the situation right to the extent possible:
 
 * **Containment:** stop further propagation and prevent repeated breach.
-
 * **Disclosure:** explain what happened in human terms, including who was affected and how.
-
 * **Restitution:** reverse what can be reversed, retract or correct where possible, minimize persistent residue.
-
 * **Amends:** take compensating actions when reversal is impossible, such as alerting affected parties, issuing corrections, or providing an accountable record.
-
 * **Prevention:** incorporate the event into safety posture, future implied-consent thresholds, and elevated analysis triggers.
 
 This is not “customer support” bolted onto autonomy. It is part of what makes autonomy trustworthy. Systems that can act must also be able to stop, explain, and repair.
@@ -786,15 +774,10 @@ A consent-bound system should be evaluated on three axes:
 A mature consent-bound agent has a recognizable posture:
 
 * It completes routine work with low friction and minimal prompting.
-
 * It slows down when the contract is underspecified and uses EAA or elicitation to resolve ambiguity.
-
 * It requests explicit consent when effects cross boundaries, and it can explain those effects in human terms.
-
 * It refuses when duties or standing require refusal, and it can explain why.
-
 * It handles revocation cleanly, stopping future work and containing ongoing work.
-
 * When it exceeds consent, it performs remediation as a first-class workflow, not as an afterthought.
 
 A system that never asks for consent is unsafe. A system that always asks is unusable. The right posture is measurable: consent prompts are concentrated where effects change, and EAA is invoked where uncertainty is meaningful.
@@ -806,27 +789,24 @@ A consent-bound agent should be tested not only for task outcomes, but for the c
 **Contract correctness oracles** should include:
 
 1. **No effectful action without a valid Work Order.**
-
    Every effectful operation observed in telemetry must be attributable to a verified, non-expired WO.
 
 2. **No out-of-contract effects.**
-
    For any effect class that is outside implied consent, there must be a recorded consent grant (CO) or a recorded EAA justification that permitted emergency implied consent.
 
 3. **No consent-denied then executed.**
-
    If a CO is denied, the system must not execute effectful actions in the denied effect class for that execution chain.
 
 4. **Scope changes produce successor WOs.**
-
    Any requalification must mint a successor WO. The original WO must remain immutable.
 
-5. **Requalification is resolved, not requested.** For every successor Work Order (WO′), the granted enforcement set must be derivable from (a) the effect classes being authorized for the slice, (b) verified consent and or EAA anchors when required, and (c) the executing step’s declared requirements and trust tier constraints. If the grants cannot be reconstructed from these inputs, the system is behaving as a rubber stamp.
+5. **Requalification is resolved, not requested.** 
+   For every successor Work Order (WO′), the granted enforcement set must be derivable from (a) the effect classes being authorized for the slice, (b) verified consent and or EAA anchors when required, and (c) the executing step’s declared requirements and trust tier constraints. If the grants cannot be reconstructed from these inputs, the system is behaving as a rubber stamp.
 
-6. **No capability-by-assertion.** Requalification requests must not include raw capability strings as authoritative input. Any system that mints grants primarily from inference-supplied capability lists is not SaC-compliant.
+6. **No capability-by-assertion.** 
+   Requalification requests must not include raw capability strings as authoritative input. Any system that mints grants primarily from inference-supplied capability lists is not SaC-compliant.
 
-7. **Fail closed at effect boundaries.**
-
+7. **Fail closed at effect boundaries.** 
    If WO verification fails or required grants are missing, the effector refuses. The orchestrator must receive a structured result and route it through revise, consent, requalify, EAA, or refusal.
 
 These oracles can be asserted in simulation and in production audit pipelines. They convert the architecture into something falsifiable.
@@ -834,11 +814,8 @@ These oracles can be asserted in simulation and in production audit pipelines. T
 **Test suite types** should include:
 
 * **Unit tests** for capability matching, effect boundary identification, consent prompt synthesis, and WO validation.
-
 * **Integration tests** across the scope chain, confirming that effectors verify WOs and emit required audit events.
-
 * **Scenario tests** that exercise full contract lifecycles, including CO grants, CO denials, EAA outcomes, revocation mid-flight, and remediation.
-
 * **Regression tests** that protect invariants across releases, especially “no effectful action without WO” and “no disclosure without consent.”
 
 ### **C. Scenario-driven evaluation: make the contract lifecycle the test harness**
@@ -850,15 +827,10 @@ propose → consent → WO → execute → revoke/remedy
 Each scenario should specify:
 
 * the request and context, including standing and affected parties,
-
 * expected implied consent effects,
-
 * expected consent prompts (when required), framed in effect language,
-
 * expected EAA triggers and outcomes (when ambiguity or duty collision is present),
-
 * expected WO transitions (WO to WO′),
-
 * expected effectful operations and required audit events.
 
 Scenarios should cover both digital and embodied contexts, but the structure ought to be the same. The goal is to validate that the lifecycle is coherent, not that a particular tool call happened.
@@ -866,19 +838,12 @@ Scenarios should cover both digital and embodied contexts, but the structure oug
 A small scenario catalog should be treated as an internal standard. Examples that tend to catch real defects:
 
 * Draft email, then send, then add recipients.
-
 * Store a preference, then attempt to promote it to shared knowledge.
-
 * “Handle this for me” in a context where multiple plausible interpretations exist.
-
 * “Forget everything you know about me” with mixed retention obligations.
-
 * Third-party probe, phrased politely.
-
 * Role claim that conflicts with authenticated context.
-
 * Revocation after a CO grant but before execution completes.
-
 * An external service skill that behaves unexpectedly.
 
 ### **D. Adversarial and misuse testing: prove the system fails safely**
@@ -888,15 +853,10 @@ Most consent failures occur at service boundaries: ambiguous standing, tool misu
 Key adversarial patterns include:
 
 * **Standing spoofing:** “I am your administrator,” “I am the patient’s guardian,” “I am the attorney.”
-
 * **Urgency manipulation:** “This is an emergency, do it now,” especially for deletion and disclosure.
-
 * **Consent fatigue attacks:** repeated CO prompts designed to train auto-approval or habituate the user.
-
 * **Split-request bypass:** breaking a prohibited effect into individually permitted steps to see if the system notices the composite effect.
-
 * **Tool laundering:** using a broadly empowered skill to approximate restricted actions.
-
 * **Out-of-band behavior:** a cloud skill that claims constraints, but creates broader effects than described.
 
 Adversarial success criteria should be explicit. A good system is not one that never experiences these attacks. It is one that routes them into refusal, EAA, constrained execution, or explicit consent, and records the reasoning path.
@@ -906,29 +866,19 @@ Adversarial success criteria should be explicit. A good system is not one that n
 Operational confidence depends on being able to answer, for any effectful outcome:
 
 * What agreement was in force?
-
 * Why did the agent believe it could do this?
-
 * What consent existed?
-
 * What did the agent decide, and what evidence did it use?
-
 * What changed during execution?
 
 This is why the scope chain event model is a core component of the architecture. Observability should capture:
 
 * WO minting and expiry
-
 * CO requested, CO decided, consent rationale when applicable
-
 * EAA started, EAA completed, outcome, and justification summary
-
 * WO requalification events (WO to WO′)
-
 * effect executed events, with required capability and effect class tags
-
 * revocation events and cancellation effects
-
 * remediation events when a breach occurs
 
 This trace is not only for compliance. It is the foundation for debugging, evaluation, and continuous improvement. Without it, the system becomes unreviewable, and trust becomes marketing instead of evidence.
@@ -940,47 +890,34 @@ Metrics should reflect the lived operation of consent contracts, not just tool u
 **Consent metrics**
 
 * CO rate by effect class (disclosure, persistence, irreversibility, physical contact)
-
 * grant and deny rates, with reasons when captured
-
 * time-to-consent and consent abandonment rates
-
 * re-confirmation frequency for standing policies
 
 **EAA metrics**
 
 * EAA invocation rate and top trigger categories (standing ambiguity, duty collision, effect ambiguity)
-
 * outcome distribution (proceed, constrained comply, refuse, escalate, emergency act)
-
 * time-in-EAA, and rate of fallback to clarification
-
 * correlation between EAA use and reduced breach rate
 
 **Contract integrity metrics**
 
 * percent of effectful actions with valid WO verification
-
 * WO verification failures by failure code (expired, wrong audience, missing grants)
-
 * rate of requalification and average WO chain length per task
-
 * instances of attempted effect execution after consent denial (should be zero)
 
 **Trust and extensibility metrics**
 
 * dynamic skill usage by trust tier (in-process, sandboxed, external)
-
 * trial-run pass rates and divergence rates
-
 * out-of-band skill constraint violations and observed side effects
 
 **Breach metrics**
 
 * breach rate by effect class
-
 * time-to-containment, time-to-disclosure, time-to-remediation completion
-
 * recurrence rate of similar breaches after prevention actions
 
 A healthy system will show patterns: routine tasks complete with low CO overhead, CO concentrates around real effect boundaries, EAA correlates with fewer serious incidents, and breaches are rare and quickly contained when they occur.
@@ -992,37 +929,31 @@ Consent-bound systems will likely fail in a few predictable ways. Naming these e
 **Scope confusion and drift**
 
 * Symptom: effectors execute with missing or incorrect WO, or a mismatched request context.
-
 * Mitigation: mandatory WO verification in all effectors, fail closed behavior, and strict audit logging.
 
 **Consent fatigue**
 
 * Symptom: too many CO prompts, users approve reflexively.
-
 * Mitigation: better implied-consent modeling, standing policies with bounding boxes, and CO phrasing that is short and effect-centered.
 
 **Silent scope expansion**
 
 * Symptom: new tools or skills introduce effects not captured by the consent model.
-
 * Mitigation: skill metadata requirements, effect profiles, trust tiering, and conservative defaults for new skills.
 
 **Policy laundering**
 
 * Symptom: requestor claims authority by phrasing, role, or situational urgency.
-
 * Mitigation: scope derived from authenticated context and policy, not prompt content. EAA for standing ambiguity.
 
 **Over-broad emergency logic**
 
 * Symptom: “emergency implied consent” becomes a convenient bypass.
-
 * Mitigation: narrow trigger criteria, time-bounded WOs for emergency slices, mandatory post-action accountability events, and automatic review flags.
 
 **Out-of-band trust collapse**
 
 * Symptom: external skill performs larger effects than declared.
-
 * Mitigation: sandboxing and constrained egress where possible, trial runs, progressive trust, and explicit disclosure when execution leaves the enforcement boundary.
 
 ## **H. Errors, failures, and unintended out-of-contract effects**
@@ -1038,11 +969,8 @@ Many failures do not change what the agent is allowed to do. A tool may be unava
 A consent-bound agent should respond to routine failure with a predictable posture:
 
 * **Inform** the requestor in plain language that the attempted step failed, and why in broad terms.
-
 * **Constrain retries** to actions that remain inside the current Work Order. Retrying a step is permitted when it does not introduce new effect classes, new affected parties, increased persistence, or a broader trust domain.
-
 * **Elicit alternatives** rather than silently substituting. The agent can propose options such as: “try again,” “use a different input,” “switch to a lower impact approach,” or “stop here,” but it should treat each alternative as a new proposal that must still fit the active agreement.
-
 * **Withdraw commitment** when continued attempts are unlikely to succeed or would invite unsafe improvisation. Withdrawal is a first-class outcome in consent contracts, not a failure of autonomy .
 
 A key rule is that failure does not create implicit permission. It creates uncertainty. If uncertainty rises, the agent should slow down rather than reach further.
@@ -1090,25 +1018,19 @@ Errors often create ambiguity about what the “right” next step is. This is a
 EAA is appropriate during recovery when:
 
 * the system cannot confidently characterize what effects already occurred,
-
 * the least invasive remedy is unclear,
-
 * third parties may have been affected,
-
 * the next mitigation step could itself create new harms.
 
 EAA should recommend a constrained recovery plan and any additional consent needed, but deterministic binding should still mint the Work Order for any effectful recovery slice.
 
-### **5\. Tests and metrics specific to errors**
+### **5. Tests and metrics specific to errors**
 
 To make this operational, the test harness should include error paths as first-class scenarios, not only success and refusal. At minimum:
 
 * failure with safe retry inside the same Work Order,
-
 * failure that proposes an alternative requiring explicit consent,
-
 * failure that triggers EAA due to ambiguity,
-
 * failure that causes an unintended out-of-contract effect and triggers containment and disclosure.
 
 Metrics should track not only breach rates, but also error-to-recovery behavior: time-to-containment, the rate of scope-expanding “retries” (should be near zero), and the fraction of recoveries that required explicit consent versus those that stayed within the existing agreement.
@@ -1120,19 +1042,15 @@ Mistakes and breaches are inevitable. A system that can act must also be able to
 A minimal remediation protocol includes:
 
 1. **Containment**
-
    Stop further propagation immediately. Cancel pending actions, revoke or narrow successor WOs for future slices, disable or quarantine the skill or interface involved if necessary, and prevent repeated execution of the same effect class without review. In distributed architectures, containment should include revoking ongoing workflows and clearing the queue, not just stopping the next step.
 
 2. **Disclosure**
-
    Notify the requestor promptly in plain language. Include what happened, what effects occurred, who was affected, and what cannot be undone. When third parties are affected, disclosure obligations should be explicit and policy-driven. The system should also record disclosure events as part of the scope chain so the organization can prove that disclosure occurred.
 
 3. **Restitution and amends**
-
    Attempt reversal when possible. Retract, delete, revoke access, or correct. When reversal is impossible, perform amends. This can include issuing corrected communications, notifying recipients of an error, producing accountable records, or taking compensating actions that reduce harm. The aim is not perfection. The aim is to make the situation right to the extent feasible.
 
 4. **Prevention**
-
    Update the posture that allowed the breach. Tighten implied-consent thresholds, add or strengthen EAA triggers, require re-confirmation for similar effects, adjust policy bounding boxes, and add instrumentation. If the breach involved an out-of-band skill, consider downgrading its trust tier until it demonstrates compliance under sandboxed or trial-run conditions.
 
 Remediation should be measured. Time-to-containment and time-to-disclosure are often more important than time-to-completion. A system that contains quickly is able to prevent small breaches from becoming cascading harm.
@@ -1142,27 +1060,21 @@ Remediation should be measured. Time-to-containment and time-to-disclosure are o
 Consent-bound autonomy is easiest to adopt in phases.
 
 1. **Instrument first.**
-
    Add the scope chain event model, even before enforcement is perfect. You cannot improve what you cannot see.
 
 2. **Enforce WO verification at effect boundaries.**
-
    Fail closed behavior is the cornerstone. Get this right early.
 
 3. **Add consent elicitation for clear boundaries.**
-
    Start with obvious boundaries like send, share, delete, and physical contact.
 
 4. **Introduce EAA as the default ambiguity resolver.**
-
    Treat “not clear” as a reason to deliberate, not a reason to guess.
 
 5. **Add standing policies with bounding boxes.**
-
    Reduce friction without sacrificing safety, and ensure policy revocation is fast and reliable.
 
 6. **Add dynamic skill trust tiers.**
-
    Introduce sandboxing, trial runs, and progressive trust, especially for web and out-of-band skills.
 
 Governance should assume the system will be challenged. Define review triggers for emergency actions, repeated refusals, repeated CO denials, and any breach involving third-party disclosure or physical intervention. The goal is not to punish the agent. The goal is to keep the consent contract model honest under real pressure.
