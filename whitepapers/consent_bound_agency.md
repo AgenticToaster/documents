@@ -733,8 +733,6 @@ end
 *Fig. 3*
 *Execution, refusal, audit trail, revocation and remedy*
 
-### 
-
 ### **B. Scope chain narrative**
 
 1. **Request intake and grounding**
@@ -1188,10 +1186,6 @@ Such conversations are exhausting and the entire premise is facile. Generative A
 ​Moreover, I might suggest that even that is a pointless question. The true measure of the work is what it contributes to society. That is, “Is this work intrinsically valuable?” Does its content contribute materially and distinctly to the human endeavor? On that point, I’d say I like to think so, but that remains to be seen.
 
 P.S. No AI was used in the creation of this rant.
-
-## 
-
-## 
 
 ## **Related Work**
 
