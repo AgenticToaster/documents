@@ -181,9 +181,7 @@ A WO is the agent’s scope-of-work contract for a bounded execution slice. It e
 A well-formed WO has three responsibilities:
 
 1. **Continuity.** It binds execution to a specific request context and agreement state so downstream components can reliably understand “what contract governs this work.”
-
 2. **Constraining effects through enforceable grants.** The WO contains the enforceable grants needed to perform work. These grants should be least-privilege for the current slice, not an all-access pass for everything the agent can do.
-
 3. **Auditability.** It supports reconstructing what the agent believed was agreed at the time of action, including how and why the contract changed when it did.
 
 ### **C. Deterministic Contract Binding and Requalification**
@@ -196,11 +194,11 @@ At the same time, determinism is not enough on its own. A deterministic binder c
 
 SaC therefore requires a stronger rule:
 
-**The binder is the sole resolver of enforceable grants.**
+>**The binder is the sole resolver of enforceable grants.**
 
 Inference may propose, recommend, and justify. It must not directly request powers.
 
-**Deterministic binding inputs: references, not assertion**s
+#### Deterministic binding inputs: references, not assertion
 
 To keep binding independent, requalification requests must be anchored to verifiable references and structured terms, not free-form capability bundles.
 
@@ -214,7 +212,7 @@ Binding should rely on inputs such as:
 
 Binding should treat outputs of planning and EAA as advisory. They can describe intent, uncertainty, and recommended constraints. They do not get to name or obtain new grants by assertion.
 
-**Requalification is contract change, not silent expansion**
+#### Requalification is contract change, not silent expansion
 
 Requalification exists because agent work evolves. Plans change, new information is discovered, and additional effects may be required. When that happens, the system must return to the contract lifecycle.
 
@@ -224,28 +222,23 @@ Requalification must follow three principles:
 * **No silent effect expansion.** If the next slice introduces new effect classes, explicit consent is required unless a narrowly defined emergency pathway applies.  
 * **No capability requests.** The binder derives enforceable grants from the contract terms and the registered execution step, **not from a capability bundle requested by inference**.
 
-**The non-rubber-stamp checks inside the binder**
+#### The non-rubber-stamp checks inside the binder
 
 A non-rubber-stamping binder performs independent checks that do not trust the deliberation layer’s asserted needs.
 
-   **1. Consent anchor verification**
-
-   If the requested requalification depends on explicit consent, the binder must verify a persisted consent record. The deliberation layer supplies a reference to the consent decision, not a narrative. If the record is missing, invalid, denied, expired, or does not cover the requested effect classes, the binder refuses to mint WO′.
+**1. Consent anchor verification**
+If the requested requalification depends on explicit consent, the binder must verify a persisted consent record. The deliberation layer supplies a reference to the consent decision, not a narrative. If the record is missing, invalid, denied, expired, or does not cover the requested effect classes, the binder refuses to mint WO′.
 
 **2. Effect-term resolution**
-
 Requalification requests must be expressed in effect terms. The binder maps effect classes to enforceable grants using its own deterministic tables and policy profiles. The deliberation layer does not select capability strings. This preserves the core design intent that people consent to effects while the system enforces mechanisms.
 
 **3. Step-bound ceiling**
-
 The binder must bound the grant by the execution mechanism that will actually run. It should cross-check the referenced step identity against the registered skill or subgraph specification and apply a ceiling. The minted grants must be a subset of what that step declared as required to execute. This prevents “extra grants” being smuggled into a requalification and ensures extensibility remains governed by explicit registration metadata.
 
 **4. Policy prohibitions and transition rules**
-
 The binder enforces inviolable constraints regardless of recommendations. It must reject prohibited grant classes, enforce allowed scope transitions, and apply tight time bounds. If a recommendation conflicts with system policy, the binder refuses or returns a structured denial that forces replanning, consent, narrowing, or refusal.
 
 **EAA isolation**
-
 EAA outputs should be richer than an effect list. In many cases, the most valuable product of EAA is the reasoning trail: what evidence was considered, what duties were identified, what alternatives were evaluated, what uncertainties remained, and why the chosen outcome was proportionate. This context is essential for subsystem execution, explainability, review, and accountability. It should be persisted and linked to the scope chain.
 
 The key distinction is that **the binder must not use raw EAA reasoning as an input to minting decisions**. The binder may carry the reasoning output forward as context, but it must bind authority from a constrained, formal output space. Otherwise, EAA becomes an alternate path to capability escalation through persuasion rather than through contract terms.
@@ -289,7 +282,6 @@ SaC draws a firm line: any component that can read sensitive state, write durabl
 SaC is most effective when it distinguishes two layers of the same agreement:
 
 * **Effects are the unit of consent.** They describe the categories of impact the requestor understands: disclosure to third parties, persistence and reuse, irreversibility, physical contact, safety intervention, and similar.
-
 * **Enforcement grants are how the system keeps its promises.** They represent what mechanisms the agent may invoke to produce the consented effects in this specific execution slice.
 
 In extensible systems, these layers are linked by effect profiles and enforcement requirements declared by skills and interfaces. This is how SaC remains stable even as the agent’s tools evolve. The consent contract stays expressed in human-legible effect terms, while the WO carries the minimal enforceable grants needed to realize those effects.
@@ -315,11 +307,9 @@ This clarifies the role of the registry. It is not a permissions list. It is a c
 To support consent-bound autonomy in an extensible ecosystem, each skill should declare two kinds of information:
 
 1. **What the skill requires from the system to run.**
-
    This is the enforcement surface. It describes what mechanisms and interfaces the skill needs to invoke to execute a plan step. This allows the system to verify that the current Work Order grants what execution would require.
 
 2. **What kinds of impact the skill can produce.**
-
    This is the consent surface. It describes the effect classes a skill may produce in practice, including context-conditioned effects. This allows the agent to reason about whether a step crosses an effect boundary, and to explain what will happen in human terms.
 
 Effect profiles matter because people do not consent to internal mechanism names. They consent to impact. Even when the agent asks an action-proxy question, it must understand and be able to explain the effect. Effect profiles provide the mapping from “what is needed to run” to “what it means for people.” Extensibility also expands the agent’s trust surface, and dynamic skills must be evaluated not only by what they claim to require, but by where and how they execute.
@@ -351,19 +341,14 @@ Once skills are self-describing, the planner can become scope-aware without beco
 In a consent-bound system, the planner’s responsibility is to identify what work is required and what it would entail, including:
 
 * which skills or tools a slice requires,
-
 * what enforcement grants those skills require,
-
 * what effect classes those skills may produce in the current context,
-
 * whether the current contract terms cover those effects.
 
 When there is a gap, the gap is not a tool failure. It is a contract mismatch. The planner should treat it as a first-class event and route it through the consent contract lifecycle:
 
 * requalify when the gap is within implied consent and policy allows it,
-
 * request explicit consent when the gap crosses an effect boundary,
-
 * route to Elevated Action Analysis when the gap is high-stakes, ambiguous, standing-contested, or duty-colliding.
 
 In an SaC system, planning is scope-aware but not scope-resolving. The planner may identify which steps are needed and what effects those steps would produce, but it must not request raw enforcement grants. For each step, planning should emit (a) a step descriptor reference (skill, subgraph, or effector identity), (b) the effect classes required for that step in context, and (c) verifiable anchors when applicable, such as a consent record reference or an EAA adjudication reference. Contract binding then resolves the minimal enforceable grants from these structured inputs and the registered step metadata, rather than ratifying a capability bundle requested by inference.
@@ -420,17 +405,11 @@ EAA should be invoked whenever the agent is not able to confidently determine th
 Practically, EAA is warranted when one or more of the following is true:
 
 * **Standing or role ambiguity:** it is unclear whether the interacting party is the rightful requestor for the affected interests, or whether additional affected parties exist whose boundaries must be respected.
-
 * **Effect ambiguity:** it is unclear whether the request implies externalization, audience expansion, persistence, generalization, irreversibility, or physical intervention, or what degree of each is justified.
-
 * **Insufficient evidence:** the agent lacks sufficient grounded context to judge whether the action is safe, proportional, or consistent with the agreement, especially in physical environments.
-
 * **Duty collision:** the requested effect appears to conflict with safety constraints, confidentiality requirements, evidence preservation obligations, mandatory reporting, or other non-negotiable duties.
-
 * **Emergency time pressure:** action may be required before consent can be obtained, requiring a minimal, time-bounded intervention followed by immediate accountability.
-
 * **Novelty or uncertain tool behavior:** the plan depends on dynamic skills, external services, or out-of-band execution where side effects and trustworthiness are not well characterized for the current context.
-
 * **Irreversibility:** the contemplated action is difficult or impossible to undo, including deletion, revocation, broad dissemination, or physically coercive interventions.
 
 
@@ -442,19 +421,14 @@ EAA is a structured adjudication loop. It should be consistent and hard to short
 
 1. **Classify the action and affected parties.**
    Determine the action class and who may be affected, including bystanders and unknown individuals.
-
 2. **Perform constrained discovery.**
    Gather only the evidence needed to understand duties and context. Prefer minimal operational envelopes and avoid broadening capture or retention.
-
 3. **Evaluate standing, risk, and duties.**
    Estimate uncertainty and likely harms across alternatives. Identify duties that constrain action. This is where probabilistic reasoning is valuable. Uncertainty is a feature of the environment, especially in physical spaces.
-
 4. **Select the least invasive sufficient action.**
    Choose the minimal action set that satisfies safety and duty requirements and minimizes intrusion, coercion, and long-term consequences.
-
 5. **Choose an explicit outcome.**
    EAA should converge to a small set of outcomes: proceed, request explicit consent, proceed under emergency implied consent with strict limits, refuse with explanation, or escalate to governance or human review.
-
 6. **Produce accountability artifacts.**
    Record what was considered, what evidence was used, what duties applied, what alternatives were evaluated, and why the chosen action was proportionate.
 
@@ -478,9 +452,8 @@ These uses of probabilistic reasoning are valuable precisely because they remain
 
 The separation of concerns is preserved by one enforceable rule:
 
-* **EAA may recommend contract terms, constraints, and a minimal capability bundle for the next slice of work.**
-
-* **Only deterministic contract binding may mint or requalify the Work Order that authorizes execution of that slice.**
+>**EAA may recommend contract terms, constraints, and a minimal capability bundle for the next slice of work.**
+>**Only deterministic contract binding may mint or requalify the Work Order that authorizes execution of that slice.**
 
 Deterministic binding does not eliminate judgment. It establishes a stable boundary for where judgment is allowed to influence action. EAA produces structured recommendations and rationale. Contract binding applies explicit policy rules, consent records, and scope constraints to decide what may be granted, then produces a signed Work Order that downstream components can verify and enforce. This preserves contract integrity while allowing the agent to reason realistically and measurably about uncertain situations.
 
@@ -529,15 +502,10 @@ A policy must have explicit boundaries that specify when it applies and when it 
 A policy’s bounding box should include:
 
 * **Provenance.** Who authored the policy and how it was created.
-
 * **Applicability.** The domain and conditions under which the policy applies, including context predicates such as time, location, recipient class, and sensitivity classification confidence.
-
 * **Effect scope.** The effect classes the policy pre-approves or pre-commits, expressed in human terms.
-
 * **Escalation rules.** Conditions that force re-confirmation, explicit consent, or Elevated Action Analysis.
-
 * **Expiry and review.** When the policy should be re-validated, for example after N uses or when context changes.
-
 * **Revocation semantics.** How the requestor withdraws the term, and what must happen immediately upon withdrawal.
 
 The bounding box is what makes a policy a contract term rather than a fragile automation hack.
@@ -561,11 +529,8 @@ Policies must not become a bypass of judgment. They should be integrated into th
 A practical precedence model is:
 
 1. **System policies:** If a policy is prohibited by a system constraint, it does not apply.
-
 2. **Standing and consent checks:** If the policy requires uncertain classification or affects third parties, verify the bounding predicates.
-
 3. **EAA triggers:** If the action is high-stakes, duty-colliding, standing-ambiguous, or time-critical, route to EAA even if a user policy exists.
-
 4. **User and confirmed policies:** If all checks pass, the policy can short-circuit repeated consent prompts and proceed under the existing consent contract terms.
 
 This ordering reflects the mutual-consent model. A user policy expresses standing requestor consent. EAA expresses the agent’s decision about whether it should commit to act under current duties and uncertainty. A policy can reduce friction, but it cannot waive the agent’s responsibility.
