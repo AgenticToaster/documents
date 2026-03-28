@@ -654,7 +654,7 @@ The architecture is intentionally subordinate to the consent contract lifecycle.
 ### **A. Diagrams: contract-bound execution flow**
 
 ```mermaid
-%%{init:{"theme":"base","themeVariables":{"fontFamily":"Inter, Arial, sans-serif","fontSize":"24px","primaryTextColor":"#111111","lineColor":"#111111"},"sequence":{"useMaxWidth":false,"actorFontSize":24,"messageFontSize":22,"noteFontSize":22}}}%%
+%%{init:{"theme":"base","themeVariables":{"fontFamily":"Inter, Arial, sans-serif","fontSize":"24px","primaryTextColor":"#111111","lineColor":"#111111"},"sequence":{"useMaxWidth":true,"actorFontSize":24,"messageFontSize":22,"noteFontSize":22}}}%%
 sequenceDiagram
 autonumber
 participant R as Requestor
@@ -679,8 +679,9 @@ end
 *Fig 1* 
 *Contract formation and initial WO mint (implied consent)*
 
+
 ```mermaid
-%%{init:{"theme":"base","themeVariables":{"fontFamily":"Inter, Arial, sans-serif","fontSize":"24px","primaryTextColor":"#111111","lineColor":"#111111"},"sequence":{"useMaxWidth":false,"actorFontSize":24,"messageFontSize":22,"noteFontSize":22}}}%%
+%%{init:{"theme":"base","themeVariables":{"fontFamily":"Inter, Arial, sans-serif","fontSize":"24px","primaryTextColor":"#111111","lineColor":"#111111"},"sequence":{"useMaxWidth":true,"actorFontSize":24,"messageFontSize":22,"noteFontSize":22}}}%%
 sequenceDiagram
 autonumber
 participant OR as Orchestrator
@@ -723,7 +724,7 @@ end
 *Boundary crossings (CO \+ EAA) and non-rubber-stamp requalification*
 
 ```mermaid
-%%{init:{"theme":"base","themeVariables":{"fontFamily":"Inter, Arial, sans-serif","fontSize":"24px","primaryTextColor":"#111111","lineColor":"#111111"},"sequence":{"useMaxWidth":false,"actorFontSize":24,"messageFontSize":22,"noteFontSize":22}}}%%
+%%{init:{"theme":"base","themeVariables":{"fontFamily":"Inter, Arial, sans-serif","fontSize":"24px","primaryTextColor":"#111111","lineColor":"#111111"},"sequence":{"useMaxWidth":true,"actorFontSize":24,"messageFontSize":22,"noteFontSize":22}}}%%
 sequenceDiagram
 autonumber
 participant OR as Orchestrator
