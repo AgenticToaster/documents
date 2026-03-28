@@ -1,7 +1,7 @@
 ### Papers
 
-- Consent Bound Agency 
+- Consent Bound Agency
     - [Whitepaper (md)](./whitepapers/consent_bound_agency.md)
     - [Whitepaper (PDF)](./whitepapers/consent_bound_agency.pdf)
-    - [Technical Brief(md)](./whitepapers/consent_bound_agency_brief.md)
+    - [Technical Brief (md)](./whitepapers/consent_bound_agency_brief.md)
     - [Technical Brief (PDF)](./whitepapers/consent_bound_agency_brief.pdf)
