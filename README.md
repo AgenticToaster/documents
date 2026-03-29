@@ -12,9 +12,9 @@ Please contact agentictoaster@gmail.com for media releases, republishing and oth
     - [Consent Bound Agency Whitepaper](https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.md)
         - https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.md
     - [Consent Bound Agency Whitepaper (PDF)](https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.pdf)
-        - https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency.pdf
+        - https://agentictoaster.github.io/documents/whitepapers/consent_bound_agency.pdf
     - [Consent Bound Agency Technical Brief](https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency_brief.md)
         - https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency_brief.md
     - [Consent Bound Agency Technical Brief (PDF)](https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency_brief.pdf)
-        - https://agentictoaster.github.io/documents/#/whitepapers/consent_bound_agency_brief.pdf
+        - https://agentictoaster.github.io/documents/whitepapers/consent_bound_agency_brief.pdf
     
